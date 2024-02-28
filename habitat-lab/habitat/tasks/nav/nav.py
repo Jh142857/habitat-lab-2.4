@@ -602,6 +602,10 @@ class SPL(Measure):
 
         self._previous_position = current_position
 
+        # start end distance is 0, which is unrealistic, set metric to nan
+        if self._start_end_episode_distance == 0.0:
+            self._start_end_episode_distance = np.inf
+
         self._metric = ep_success * (
             self._start_end_episode_distance
             / max(
